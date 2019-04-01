@@ -38,6 +38,16 @@ To log in the application you will need a user, you can create one here: http://
 * Saving a complaint
 * Editing a complaint
 
+### Debugging in e2e tests
+
+Run `npm run e2e:debug`, you need to start the development server separately
+
+How to set up debugging:
+https://github.com/angular/protractor/blob/master/docs/debugging.md
+
+Related Angular CLI issue:
+https://github.com/angular/angular-cli/issues/10289
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
