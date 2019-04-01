@@ -1,0 +1,22 @@
+<h1>Flights</h1>
+
+<table mat-table [dataSource]="flights" class="mat-elevation-z8">
+  <ng-container matColumnDef="flightNumber">
+    <th mat-header-cell *matHeaderCellDef> Flight No.</th>
+    <td mat-cell *matCellDef="let element"> {{element.flightNumber}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="departureCity">
+    <th mat-header-cell *matHeaderCellDef> Departure City</th>
+    <td mat-cell *matCellDef="let element"> {{element.departureCity}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="arrivalCity">
+    <th mat-header-cell *matHeaderCellDef> Arrival City</th>
+    <td mat-cell *matCellDef="let element"> {{element.arrivalCity}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="row.id"></tr>
+</table>
+

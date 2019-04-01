@@ -1,0 +1,37 @@
+<div class="container" fxLayout="column">
+  <mat-toolbar color="primary" fxFlex="none" fxLayout="row" fxLayoutAlign="space-between center">
+    <div>
+      <button mat-icon-button>
+        <mat-icon (click)="toggleMenu()">menu</mat-icon>
+      </button>
+      <span>SZIA app</span>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <div *ngIf="user" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+        <mat-icon>account_circle</mat-icon>
+        <div>{{user.username}}</div>
+      </div>
+      <button mat-flat-button (click)="logOut()">
+        <mat-icon class="text-icon">exit_to_app</mat-icon>
+        Log out
+      </button>
+    </div>
+  </mat-toolbar>
+  <mat-sidenav-container fxFlex="">
+    <mat-sidenav [opened]="isMenuOpened" [mode]="'side'" fxFlex="30%">
+      <mat-nav-list>
+        <mat-list-item id="flights-menu" routerLink="/flights" routerLinkActive="active-menu-item">
+          <mat-icon class="text-icon">flight</mat-icon>
+          Flights
+        </mat-list-item>
+        <mat-list-item id="complaints-menu" routerLink="/complaints" routerLinkActive="active-menu-item">
+          <mat-icon class="text-icon">warning</mat-icon>
+          Complaints
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

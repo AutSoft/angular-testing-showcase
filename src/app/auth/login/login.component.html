@@ -1,0 +1,19 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+  <h1>SZIA app</h1>
+  <div class="form-container" fxLayout="row" fxLayoutAlign="center center">
+    <form fxFlex="30%" fxFlex.lt-md="50%" fxFlex.lt-sm="70%" fxLayout="column" fxLayoutAlign="center stretch" #form="ngForm" (submit)="logIn()">
+      <mat-form-field>
+        <input matInput autocomplete="username" placeholder="Username" required [(ngModel)]="username" name="username">
+        <mat-error *ngIf="form.controls['username']?.invalid">Username must be provided</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="password" autocomplete="current-password" matInput placeholder="Password" required [(ngModel)]="password" name="password">
+        <mat-error *ngIf="form.controls['password']?.invalid">Password must be provided</mat-error>
+      </mat-form-field>
+      <div fxFlex="none" fxFlexAlign="center" fxLayout="row" fxLayoutGap="10px">
+        <button id="submit" mat-raised-button [disabled]="form.invalid || isLoading">Log in</button>
+        <mat-spinner *ngIf="isLoading" diameter="35"></mat-spinner>
+      </div>
+    </form>
+  </div>
+</div>

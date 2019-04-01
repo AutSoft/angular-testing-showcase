@@ -1,0 +1,36 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <form *ngIf="complaint" fxFlex="70%" fxFlex.lt-sm="100%" fxLayout="column" fxLayoutAlign="center stretch" #form="ngForm">
+      <h2>Customer info</h2>
+      <mat-form-field>
+        <input matInput placeholder="Name" [(ngModel)]="complaint.name" name="name" required #name="ngModel">
+        <mat-error *ngIf="name.hasError('required')">Name must be provided</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Email" email="" [(ngModel)]="complaint.email" name="email" required #email="ngModel">
+        <mat-error *ngIf="email.hasError('required')">Email must be provided</mat-error>
+        <mat-error *ngIf="email.hasError('email')">Provided email address is not valid</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Phone" [(ngModel)]="complaint.phoneNumber" name="phoneNumber">
+      </mat-form-field>
+      <h2>Complaint info</h2>
+      <mat-form-field>
+        <input matInput placeholder="Subject" maxlength="30" [(ngModel)]="complaint.subject" name="subject" required #subject="ngModel">
+        <mat-error *ngIf="subject.hasError('required')">Subject must be provided</mat-error>
+        <mat-hint align="end">{{subject.value?.length || 0}} / 30</mat-hint>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Content" rows="2" [(ngModel)]="complaint.content" name="content"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Image URL" [pattern]="urlValidationPattern" [(ngModel)]="complaint.imageSource" name="imageSource" #imageSource="ngModel">
+        <mat-error *ngIf="imageSource.hasError('pattern')">Provided image URL is not a valid URL</mat-error>
+      </mat-form-field>
+      <div fxFlexAlign="center" fxFlexAlign.lt-sm="stretch">
+        <button id="submit" fxFlex [disabled]="form.invalid || isLoading" (click)="submitted()" mat-raised-button color="primary">
+          Submit
+        </button>
+        <mat-spinner fxFlex="none" *ngIf="isLoading" diameter="35"></mat-spinner>
+      </div>
+  </form>
+</div>

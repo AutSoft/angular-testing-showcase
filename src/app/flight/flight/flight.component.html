@@ -1,0 +1,22 @@
+<h1 id="flightNumber">{{flightDetails.flightNumber}}</h1>
+
+<div id="status">{{flightDetails.status}}</div>
+<div id="comment">{{flightDetails.comment}}</div>
+<div id="delay">{{flightDetails.delay}}</div>
+
+<div fxLayout="row">
+  <szia-flight-stop-details id="from" fxFlex="50%"
+  [city]="flightDetails.departureCity"
+  [airportCode]="flightDetails.departureCode"
+  [airportName]="flightDetails.departure"
+  [time]="flightDetails.departureTime"
+>
+</szia-flight-stop-details>
+<szia-flight-stop-details id="to" fxFlex="50%"
+  [city]="flightDetails.arrivalCity"
+  [airportCode]="flightDetails.arrivalCode"
+  [airportName]="flightDetails.arrival"
+  [time]="flightDetails.arrivalTime"
+>
+</szia-flight-stop-details>
+</div>
