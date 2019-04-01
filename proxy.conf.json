@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "http://szia-backend.herokuapp.com",
+    "changeOrigin": true
+  }
+}
